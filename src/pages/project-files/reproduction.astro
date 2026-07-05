@@ -1,0 +1,58 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import ReproductionContent from "../../content/reproduction.md";
+
+const base = "/project-files/reproduction";
+const groups = [
+  ["Extraction", [
+    ["extraction-prompt.md", "Extractor"],
+    ["extraction-critic-prompt.md", "Critic"],
+    ["extraction-verifier-prompt.md", "Verifier"],
+    ["extraction-orchestrator-prompt.md", "Orchestrator"],
+  ]],
+  ["Classify", [
+    ["classify-screener-prompt.md", "Screener"],
+    ["classify-critic-prompt.md", "Critic"],
+    ["classify-verifier-prompt.md", "Verifier"],
+    ["classify-orchestrator-prompt.md", "Orchestrator"],
+  ]],
+  ["Models", [
+    ["models-extractor-prompt.md", "Extractor"],
+    ["models-verifier-prompt.md", "Verifier"],
+    ["models-orchestrator-prompt.md", "Orchestrator"],
+  ]],
+  ["Behaviours", [
+    ["behaviour-writer-prompt.md", "Writer"],
+    ["behaviour-critic-prompt.md", "Critic"],
+    ["behaviour-verifier-prompt.md", "Verifier"],
+    ["behaviour-orchestrator-prompt.md", "Orchestrator"],
+  ]],
+  ["Naming", [
+    ["naming-rules.md", "Naming rules"],
+  ]],
+  ["Overview", [
+    ["README.md", "Bundle README"],
+  ]],
+];
+---
+
+<Layout title="Reproduction Bundle">
+  <Nav active="project-files" />
+  <div class="prose-body">
+    <ReproductionContent />
+
+    <h2>Download the prompts</h2>
+    <p>Each step's prompts, as individual Markdown files.</p>
+    {groups.map(([step, files]) => (
+      <div>
+        <h3>{step}</h3>
+        <ul>
+          {files.map(([file, label]) => (
+            <li><a href={`${base}/${file}`} download>{label}</a> — <code>{file}</code></li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</Layout>

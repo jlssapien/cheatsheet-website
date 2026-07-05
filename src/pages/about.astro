@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import AboutContent from "../content/about.md";
+---
+
+<Layout title="About">
+  <Nav active="about" />
+  <div class="prose-body">
+    <AboutContent />
+  </div>
+</Layout>

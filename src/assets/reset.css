@@ -1,0 +1,76 @@
+/* ===== Fonts ===== */
+@font-face {
+  font-family: "Plain";
+  src: url("/Plain.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plain";
+  src: url("/Plain-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM";
+  src: url("/IBM.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* ===== Variables (Nord Light) ===== */
+:root {
+  --font-sans: Plain, ui-sans-serif, system-ui;
+  --font-mono: IBM, monospace;
+
+  /* Nord Polar Night */
+  --nord0: #2e3440;
+  --nord1: #3b4252;
+  --nord2: #434c5e;
+  --nord3: #4c566a;
+
+  /* Nord Snow Storm */
+  --nord4: #d8dee9;
+  --nord5: #e5e9f0;
+  --nord6: #eceff4;
+
+  /* Nord Frost */
+  --nord7: #8fbcbb;
+  --nord8: #88c0d0;
+  --nord9: #81a1c1;
+  --nord10: #5e81ac;
+
+  /* Nord Aurora */
+  --nord11: #bf616a;
+  --nord12: #d08770;
+  --nord13: #ebcb8b;
+  --nord14: #a3be8c;
+  --nord15: #b48ead;
+
+  /* Semantic aliases */
+  --color-text: var(--nord0);
+  --color-bg: #ffffff;
+  --color-accent: var(--nord10);
+  --color-accent-light: #eef2f7;
+  --color-border: var(--nord4);
+  --color-muted: var(--nord3);
+}
+
+/* ===== Reset ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.5;
+}

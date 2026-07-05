@@ -1,0 +1,67 @@
+---
+// Shared top navigation for all prose (content) pages — the SAME nav as the
+// incidents app and landing page: SG logo + CHEATSHEET wordmark, cs-nav styles
+// (from /app/tokens.css, loaded by Layout.astro). One canonical, complete link
+// set. `active` highlights the current item
+// (incidents | methods | project-files | glossary | about).
+const { active } = Astro.props;
+const cls = (k) => "cs-nav-link" + (active === k ? " active" : "");
+---
+
+<nav class="cs-nav">
+  <div class="cs-nav-left">
+    <a href="/" class="cs-sitename" aria-label="CHEATSHEET — a specification gaming catalogue">
+      <svg class="cs-sitelogo" width="20" height="18" viewBox="0 0 80 80" aria-hidden="true">
+        <line x1="40" y1="68" x2="40" y2="44" stroke="currentColor" stroke-width="5" stroke-linecap="round"></line>
+        <line x1="40" y1="44" x2="40" y2="10" stroke="#8b8e93" stroke-width="5" stroke-linecap="round" stroke-dasharray="7 8"></line>
+        <path d="M 40 10 L 33 17 M 40 10 L 47 17" stroke="#8b8e93" stroke-width="5" stroke-linecap="round" fill="none"></path>
+        <path d="M 40 44 L 70 24" stroke="#b8424f" stroke-width="5" stroke-linecap="round"></path>
+        <path d="M 70 24 L 62 25 M 70 24 L 67 31" stroke="#b8424f" stroke-width="5" stroke-linecap="round" fill="none"></path>
+        <circle cx="40" cy="44" r="4" fill="currentColor"></circle>
+      </svg>
+      <span class="cs-sitewordmark">CHEATSHEET</span>
+    </a>
+    <a class={cls("incidents")} href="/incidents">INCIDENTS</a>
+    <span class="cs-nav-sep">|</span>
+    <a class={cls("methods")} href="/methods">METHODS</a>
+    <span class="cs-nav-dd">
+      <span class={"cs-nav-dd-toggle" + (active === "project-files" ? " active" : "")} tabindex="0">PROJECT FILES <span class="caret">&#9662;</span></span>
+      <span class="cs-nav-dd-menu">
+        <a href="/project-files/rubric">Classification Rubric</a>
+        <a href="/project-files/keyword-list">Keyword Search List</a>
+        <a href="/project-files/reproduction">Reproduction Bundle</a>
+        <a href="/dtree-v5.pdf">Decision Tree v5 (PDF)</a>
+      </span>
+    </span>
+    <a class={cls("glossary")} href="/glossary">GLOSSARY</a>
+    <a class={cls("about")} href="/about">ABOUT</a>
+  </div>
+</nav>
+
+<style is:global>
+  /* Base .cs-nav styles come from /app/tokens.css (same as the app pages).
+     These add the hover + dropdown behaviour for the static prose nav. */
+  .cs-nav { font-family: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace; }
+  .cs-nav-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .cs-nav-dd { position: relative; display: inline-block; }
+  .cs-nav-dd-toggle { cursor: pointer; }
+  .cs-nav-dd-toggle:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .cs-nav-dd-toggle.active {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 2px;
+  }
+  .cs-nav-dd-menu {
+    display: none; position: absolute; top: 100%; left: 0;
+    background: var(--color-bg); border: 1px solid var(--nord4);
+    min-width: 220px; padding: 0.4rem 0; z-index: 200;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  }
+  .cs-nav-dd:hover .cs-nav-dd-menu, .cs-nav-dd:focus-within .cs-nav-dd-menu { display: block; }
+  .cs-nav-dd-menu a {
+    display: block; padding: 0.4rem 0.8rem; color: var(--color-text);
+    text-decoration: none; font-size: 0.82rem; white-space: nowrap;
+  }
+  .cs-nav-dd-menu a:hover { background: var(--color-accent-light); color: var(--color-accent); }
+</style>

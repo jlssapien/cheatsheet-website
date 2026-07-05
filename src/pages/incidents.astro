@@ -1,0 +1,54 @@
+---
+// Incidents — the redesigned CHEATSHEET catalogue (tree + dashboard views).
+// Self-contained React app (browser-compiled via Babel standalone); component
+// sources served statically from /public/app; data from /incidents.json.
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>CHEATSHEET — Incidents</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/app/tokens.css" />
+    <style>
+      html, body { margin: 0; padding: 0; background: white; min-height: 100%; }
+      body { font-family: "Plain", ui-sans-serif, system-ui, sans-serif; }
+      #root { min-height: 100vh; }
+    </style>
+
+    <script is:inline src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+    <script is:inline src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+    <script is:inline src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+    <script is:inline type="text/babel" src="/app/shared.jsx"></script>
+    <script is:inline type="text/babel" src="/app/v4-dashboard.jsx"></script>
+    <script is:inline type="text/babel" src="/app/v6-tree.jsx"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script is:inline type="text/babel" data-presets="env,react">
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+
+      function App() {
+        // Default view: tree. Persist between page reloads via localStorage.
+        const [view, setView] = React.useState(() => {
+          try {
+            return localStorage.getItem("cs-incidents-view") || "tree";
+          } catch { return "tree"; }
+        });
+        React.useEffect(() => {
+          try { localStorage.setItem("cs-incidents-view", view); } catch {}
+        }, [view]);
+
+        return view === "dashboard"
+          ? <V4Dashboard view={view} onViewChange={setView} />
+          : <V6Tree view={view} onViewChange={setView} />;
+      }
+
+      root.render(<App />);
+    </script>
+  </body>
+</html>

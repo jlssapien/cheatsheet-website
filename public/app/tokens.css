@@ -1,0 +1,350 @@
+/* === Fonts (Plain from project files; IBM Plex Mono as IBM stand-in) === */
+@font-face {
+  font-family: "Plain";
+  src: url("/Plain.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plain";
+  src: url("/Plain-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap");
+
+/* === Tokens (Nord Light, exactly as in the source site) === */
+:root {
+  --font-sans: "Plain", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --nord0: #2e3440;
+  --nord1: #3b4252;
+  --nord2: #434c5e;
+  --nord3: #4c566a;
+  --nord4: #d8dee9;
+  --nord5: #e5e9f0;
+  --nord6: #eceff4;
+  --nord7: #8fbcbb;
+  --nord8: #88c0d0;
+  --nord9: #81a1c1;
+  --nord10: #5e81ac;
+  --nord11: #bf616a;
+  --nord12: #d08770;
+  --nord13: #ebcb8b;
+  --nord14: #a3be8c;
+  --nord15: #b48ead;
+
+  --color-text: var(--nord0);
+  --color-bg: #ffffff;
+  --color-accent: #2e3440;
+  --color-accent-light: #eceff4;
+  --color-border: var(--nord4);
+  --color-muted: var(--nord3);
+
+  /* === Category palette (P2: Nord, 5 distinct hues + subtle hierarchy) === */
+  /* ASG — calmer blue (attributed: foreseeable from setup, the lower-signal case) */
+  --cat-asg-bg: #d7e3f1;
+  --cat-asg-fg: #22497a;
+  --cat-asg-line: #3b6ea5;
+  --cat-asg-solid: #3b6ea5;
+
+  /* USG — strong red (unattributed: the important, harder-to-explain signal) */
+  --cat-usg-bg: #f5d8dc;
+  --cat-usg-fg: #7e2630;
+  --cat-usg-line: #b8424f;
+  --cat-usg-solid: #b8424f;
+
+  /* OOS categories are OUT OF SCOPE (not spec-gaming incidents): muted neutral
+     slate, three tonal steps (light → dark) so the sub-buckets stay legible
+     while visibly subordinate to ASG (red) / USG (blue). */
+  /* OOS-NSE — light slate */
+  --cat-oos-nse-bg: #eaedf1;
+  --cat-oos-nse-fg: #5b6474;
+  --cat-oos-nse-line: #9aa2b2;
+  --cat-oos-nse-solid: #9aa2b2;
+
+  /* OOS-BC — mid slate */
+  --cat-oos-bc-bg: #e2e6ec;
+  --cat-oos-bc-fg: #494f5e;
+  --cat-oos-bc-line: #7b8494;
+  --cat-oos-bc-solid: #7b8494;
+
+  /* OOS-BI — dark slate */
+  --cat-oos-bi-bg: #dbe0e8;
+  --cat-oos-bi-fg: #3c4356;
+  --cat-oos-bi-line: #5c6577;
+  --cat-oos-bi-solid: #5c6577;
+
+  /* Plain OOS — fallback gray (kept for legacy rows; not exposed in filters) */
+  --cat-oos-bg: var(--nord5);
+  --cat-oos-fg: var(--nord3);
+  --cat-oos-line: var(--nord4);
+  --cat-oos-solid: var(--nord3);
+}
+
+/* Reset (scoped enough not to fight design canvas) */
+.cs *, .cs *::before, .cs *::after {
+  box-sizing: border-box;
+}
+.cs {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.5;
+  font-size: 14px;
+  width: 100%;
+}
+
+/* === Shared: top nav === */
+.cs-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.55rem 1.25rem;
+  border-bottom: 1px solid var(--nord4);
+  background: var(--color-bg);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+}
+.cs-nav-left { display: flex; align-items: center; gap: 1.6rem; }
+.cs-sitename {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  padding: 0.1rem 0;
+}
+.cs-sitelogo {
+  flex: 0 0 auto;
+  color: var(--color-text);
+  display: block;
+}
+.cs-sitewordmark {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+}
+.cs-nav-link { color: var(--color-text); text-decoration: none; }
+.cs-nav-link.active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 2px;
+}
+.cs-nav-sep { color: var(--nord4); }
+.cs-nav-dd { color: var(--color-text); cursor: default; }
+.cs-nav-dd .caret { font-size: 0.6rem; margin-left: 0.2rem; opacity: 0.6; }
+
+/* Category badges (used in several views) */
+.cat-badge {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  border: 1px solid;
+  white-space: nowrap;
+}
+.cat-badge.asg { background: var(--cat-asg-bg); color: var(--cat-asg-fg); border-color: var(--cat-asg-line); }
+.cat-badge.usg { background: var(--cat-usg-bg); color: var(--cat-usg-fg); border-color: var(--cat-usg-line); }
+.cat-badge.oos { background: var(--cat-oos-bg); color: var(--cat-oos-fg); border-color: var(--cat-oos-line); }
+.cat-badge.oos-nse { background: var(--cat-oos-nse-bg); color: var(--cat-oos-nse-fg); border-color: var(--cat-oos-nse-line); }
+.cat-badge.oos-bc { background: var(--cat-oos-bc-bg); color: var(--cat-oos-bc-fg); border-color: var(--cat-oos-bc-line); }
+.cat-badge.oos-bi { background: var(--cat-oos-bi-bg); color: var(--cat-oos-bi-fg); border-color: var(--cat-oos-bi-line); }
+
+.cat-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; flex: 0 0 9px; }
+.cat-dot.asg { background: var(--cat-asg-solid); }
+.cat-dot.usg { background: var(--cat-usg-solid); }
+.cat-dot.oos { background: var(--nord3); }
+.cat-dot.oos-nse { background: var(--cat-oos-nse-solid); }
+.cat-dot.oos-bc { background: var(--cat-oos-bc-solid); }
+.cat-dot.oos-bi { background: var(--cat-oos-bi-solid); }
+
+/* === Acronym definition tooltip (works anywhere an acronym appears) === */
+.cs-acro {
+  position: relative;
+  cursor: help;
+  outline: none;
+}
+/* Inline-text variant: a subtle dotted underline signals it's explainable. */
+.cs-acro--text {
+  text-decoration: underline dotted;
+  text-decoration-color: var(--nord4);
+  text-underline-offset: 3px;
+}
+.cs-acro--text:hover,
+.cs-acro--text:focus-visible {
+  text-decoration-color: var(--color-accent);
+}
+.cs-acro-tip {
+  position: fixed;
+  z-index: 10000;
+  display: block;
+  width: 300px;
+  max-width: min(300px, 92vw);
+  background: #ffffff;
+  border: 1px solid var(--nord3);
+  box-shadow: 0 8px 24px rgba(46, 52, 64, 0.16), 0 2px 6px rgba(46, 52, 64, 0.08);
+  padding: 0.65rem 0.8rem 0.7rem;
+  /* reset any inherited badge styling (uppercase / mono / weight / spacing) */
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-transform: none;
+  text-align: left;
+  white-space: normal;
+  color: var(--nord1);
+  animation: cs-acro-in 0.12s ease-out;
+}
+@keyframes cs-acro-in {
+  from { opacity: 0; transform: translateY(-3px); }
+  to { opacity: 1; transform: none; }
+}
+.cs-acro-tip-head {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.45rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--nord5);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+.cs-acro-tip-code {
+  font-weight: 700;
+  color: var(--nord0);
+  letter-spacing: 0.05em;
+}
+.cs-acro-tip-full { color: var(--color-muted); font-size: 0.66rem; }
+.cs-acro-tip-blurb { display: block; margin: 0; color: var(--nord2); text-wrap: pretty; }
+
+/* Generic portaled hover tooltip (chart tips etc.) — fixed, above the nav,
+   clamped to the viewport. Inner content keeps its own visual classes; we only
+   neutralise their absolute positioning / hidden state here. */
+.cs-portaltip {
+  position: fixed;
+  z-index: 10000;
+  animation: cs-acro-in 0.12s ease-out;
+}
+.cs-portaltip > * {
+  position: static !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: none !important;
+  transition: none !important;
+  margin: 0 !important;
+}
+
+/* shared filter button style — used by several variations */
+.cs-fbtn {
+  background: none;
+  border: 1px solid var(--nord4);
+  border-radius: 3px;
+  padding: 0.22rem 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.cs-fbtn.active {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-accent-light);
+}
+
+/* tab group */
+.cs-tabs { display: inline-flex; border: 1px solid var(--nord4); border-radius: 4px; overflow: hidden; }
+.cs-tabs button {
+  background: none;
+  border: 0;
+  padding: 0.28rem 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  cursor: pointer;
+  border-right: 1px solid var(--nord4);
+}
+.cs-tabs button:last-child { border-right: 0; }
+.cs-tabs button.active { background: var(--color-accent); color: white; }
+
+/* search input */
+.cs-search {
+  padding: 0.28rem 0.6rem;
+  border: 1px solid var(--nord4);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  background: white;
+  color: var(--color-text);
+  outline: none;
+  width: 180px;
+}
+.cs-search:focus { border-color: var(--color-accent); }
+
+.cs-count {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--color-muted);
+  letter-spacing: 0.03em;
+}
+
+/* ============================================================= */
+/* === Mobile (.is-narrow) — shared nav + toolbar overrides  === */
+/* Driven by useIsNarrow(): active on phones or ?forceMobile=1.  */
+/* ============================================================= */
+.is-narrow { -webkit-text-size-adjust: 100%; }
+
+/* Top nav: wrap onto multiple lines, tighten gaps, no horizontal overflow */
+.is-narrow .cs-nav {
+  padding: 0.5rem 0.85rem;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
+}
+.is-narrow .cs-nav-left {
+  flex-wrap: wrap;
+  gap: 0.45rem 0.85rem;
+  width: 100%;
+}
+.is-narrow .cs-nav-section { gap: 0.4rem; }
+.is-narrow .cs-nav-sep { display: none; }
+/* The TREE / DASHBOARD switch is the priority control — give it room */
+.is-narrow .cs-nav-view { padding: 0.3rem 0.7rem; font-size: 0.74rem; }
+.is-narrow .cs-nav-view-group { order: 3; }
+
+/* Toolbar: stack its groups, full-width search */
+.is-narrow .cs-toolbar {
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 0.6rem !important;
+  padding: 0.6rem 0.85rem !important;
+}
+.is-narrow .cs-toolbar > div {
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.is-narrow .cs-search {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.9rem;
+}
+.is-narrow .cs-catfilter { gap: 0.35rem; }
+.is-narrow .cs-fbtn { padding: 0.35rem 0.55rem; }
