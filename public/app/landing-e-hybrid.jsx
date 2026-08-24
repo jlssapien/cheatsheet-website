@@ -492,7 +492,7 @@ function LandingHybrid() {
               process, using different models of Claude 4.x (mainly Opus and Sonnet). We have
               tried to verify the data through a number of sweeps, but there may still be
               mistakes, misattributions, and likely plenty of places where one might disagree.
-              We welcome your feedback.
+              {" "}<a href="mailto:jake@arbresearch.com" style={{ color: "inherit" }}>We welcome your feedback.</a>
             </p>
           </div>
         </div>

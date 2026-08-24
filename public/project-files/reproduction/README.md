@@ -1,5 +1,7 @@
 # Reproduction Bundle — specification-gaming incident pipeline
 
+This is the reproduction bundle for [CheatSheet](https://cheats.arbresearch.com), a catalogue of specification-gaming incidents in AI systems. The same files are browsable individually on the site's [reproduction page](https://cheats.arbresearch.com/project-files/reproduction). Everything here is released under CC0. If you run the pipeline on new papers and want to propose a new incident or find issues with an existing one, send it to [jake@arbresearch.com](mailto:jake@arbresearch.com).
+
 This folder collects the prompts used to build the incident dataset, genericized so they can be reused on a different paper corpus. It documents the method; it does not carry any data, papers, or run-specific scripts.
 
 The pipeline takes a corpus of papers and produces, for each incident found, a category (ASG or USG), the model families that exhibited it, four description fields, and a title.
@@ -31,7 +33,7 @@ Fill these in for your own setup before running:
 - `<paper_id>` — identifier of a source paper.
 - `<incident_id>` — stable per-incident key, assigned once and used by every step and the merge. Assign it before the classify step.
 
-The two classify prompts embed a classification rubric. Both contain the marker `<INSERT SG RUBRIC v2-amended HERE>`; paste the rubric text in at that point. The rubric defines the ASG / USG / OOS categories and the five criteria the classifier applies. It is held separately and is not included in this bundle.
+The two classify prompts embed a classification rubric. Both contain the marker `<INSERT SG RUBRIC v2-amended HERE>`; paste the rubric text in at that point. The rubric defines the ASG / USG / OOS categories and the five criteria the classifier applies. Its full text is included in this bundle as `SG-Rubric-v2-amended.md`; paste it in unchanged.
 
 ## Scope
 
