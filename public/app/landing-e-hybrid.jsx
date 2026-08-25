@@ -273,7 +273,15 @@ function LandingHybrid() {
           maxWidth: 1000,
           textWrap: "balance",
         }}>
-          {titleCase(hero.task)}.
+          {hero.incident_id ? (
+            <a href={`/e/${hero.incident_id}`} style={{ color: "inherit", textDecoration: "none" }}
+               onMouseEnter={(e) => { e.currentTarget.style.textDecoration = "underline"; }}
+               onMouseLeave={(e) => { e.currentTarget.style.textDecoration = "none"; }}>
+              {titleCase(hero.task)}.
+            </a>
+          ) : (
+            <>{titleCase(hero.task)}.</>
+          )}
         </h2>
 
         {/* INTENDED → ACTUAL */}
