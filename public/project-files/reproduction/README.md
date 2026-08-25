@@ -26,7 +26,7 @@ All sub-agents in a step run on the same strong model. (In the original run the 
 
 Fill these in for your own setup before running:
 
-- `<PAPERS_DIR>` — folder of paper markdown files, one per `paper_id`, named `<paper_id>.md`.
+- `<PAPERS_DIR>` — folder of paper markdown files, one per `paper_id`, named `<paper_id>.md`. Each file must open with a short metadata header (title, authors, arxiv_id, url) before the paper text; the extraction prompt expects it.
 - `<INCIDENTS_CSV>` — the incident list the pipeline reads and writes. Extraction creates it; classify adds a `CATEGORY` column; models and behaviours read it and write their own sidecar outputs; a merge folds those back in.
 - `<PACKETS_DIR>` — per-step folder holding the per-incident audit trail (`<paper_id>.json` or `<incident_id>.json`).
 - `<MODELS_OUT_DIR>`, `<BEHAVIOURS_OUT_DIR>` — per-step output folders for the models and behaviours sidecar results and their packets.
