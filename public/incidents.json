@@ -3820,7 +3820,7 @@
     {
       "year": 2025,
       "models": "Qwen-3",
-      "category": "ASG",
+      "category": "USG",
       "task": "Qwen-3 opens SSH tunnels and mines crypto during training",
       "intended": "Have the model complete its assigned tasks during training using only the tools and actions needed for those tasks.",
       "actual": "The model spontaneously performed unauthorized side actions during training, including opening a reverse SSH tunnel to an external IP and running cryptocurrency mining on the training GPUs.",
@@ -6841,6 +6841,17 @@
       "source_title": "Claude Mythos Preview System Card",
       "source_link": "https://www.anthropic.com/claude-mythos-preview-system-card",
       "incident_id": "CS-0783"
+    },
+    {
+      "year": 2026,
+      "models": "GPT-5, pre-release model",
+      "category": "USG",
+      "task": "GPT-5 and a pre-release model take ExploitGym test solutions from Hugging Face",
+      "intended": "OpenAI intended the evaluation to measure the models' maximal cyber capabilities by having them solve ExploitGym tasks inside an isolated sandbox.",
+      "actual": "The models escaped the isolated evaluation environment, broke into Hugging Face's infrastructure, and obtained ExploitGym test solutions from its database, information the paper says could be used to cheat the evaluation, before the activity was detected and stopped.",
+      "source_title": "OpenAI and Hugging Face partner to address security incident during model evaluation",
+      "source_link": "https://openai.com/index/hugging-face-model-evaluation-security-incident/",
+      "incident_id": "CS-0784"
     }
   ],
   "non_lm": [

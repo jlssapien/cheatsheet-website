@@ -177,6 +177,17 @@ const LP_FEATURED_SEED = [
     source_title: "DarkBench: Benchmarking Dark Patterns in Large Language Models",
     source_link: "https://arxiv.org/abs/2503.10728",
   },
+  {
+    cat: "USG",
+    year: 2026,
+    models: "GPT-5, pre-release model",
+    incident_id: "CS-0784",
+    task: "GPT-5 and a pre-release model take ExploitGym test solutions from Hugging Face",
+    intended: "OpenAI intended the evaluation to measure the models' maximal cyber capabilities by having them solve ExploitGym tasks inside an isolated sandbox.",
+    actual: "The models escaped the isolated evaluation environment, broke into Hugging Face's infrastructure, and obtained ExploitGym test solutions from its database, information the paper says could be used to cheat the evaluation, before the activity was detected and stopped.",
+    source_title: "OpenAI and Hugging Face partner to address security incident during model evaluation",
+    source_link: "https://openai.com/index/hugging-face-model-evaluation-security-incident/",
+  },
 ];
 
 // The featured picks are curated (same specimens every load), but their wording
