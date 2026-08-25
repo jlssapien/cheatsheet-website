@@ -609,7 +609,10 @@ function embedUrlFor(link) {
     }
     // .pdf direct
     if (u.pathname.toLowerCase().endsWith(".pdf")) return u.toString();
-    return u.toString();
+    // Anything else (blog posts, system cards, HTML pages) is not embedded:
+    // most such hosts refuse framing and the browser shows its own error
+    // instead of our fallback, so go straight to the fallback panel.
+    return null;
   } catch (e) {
     return link;
   }
