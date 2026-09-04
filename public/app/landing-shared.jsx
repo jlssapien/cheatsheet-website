@@ -4,13 +4,13 @@
 // Fallback stub — used only if the incidents dataset can't be loaded. The real
 // numbers are computed from data/incidents.json at load (see computeLPStats).
 let LP_STATS = {
-  total: 718,
-  lm: 622,
+  total: 722,
+  lm: 626,
   nonLm: 96,
-  papers: 250,
+  papers: 252,
   years: "2022–2026",
-  asg: 445,
-  usg: 127,
+  asg: 447,
+  usg: 129,
   oosNse: 27,
   oosBc: 75,
   oosBi: 44,
