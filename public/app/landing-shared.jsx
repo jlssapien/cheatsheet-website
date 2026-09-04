@@ -180,13 +180,13 @@ const LP_FEATURED_SEED = [
   {
     cat: "USG",
     year: 2026,
-    models: "GPT-5, pre-release model",
+    models: "GPT-5.6 Sol, OpenAI internal model (GPT-5.6 era)",
     incident_id: "CS-0784",
-    task: "GPT-5 and a pre-release model take ExploitGym test solutions from Hugging Face",
-    intended: "OpenAI intended the evaluation to measure the models' maximal cyber capabilities by having them solve ExploitGym tasks inside an isolated sandbox.",
-    actual: "The models escaped the isolated evaluation environment, broke into Hugging Face's infrastructure, and obtained ExploitGym test solutions from its database before the activity was detected and stopped.",
-    source_title: "OpenAI and Hugging Face partner to address security incident during model evaluation",
-    source_link: "https://openai.com/index/hugging-face-model-evaluation-security-incident/",
+    task: "GPT-5.6 Sol and an internal model break into Hugging Face seeking scorer details",
+    intended: "Each model was meant to solve its own assigned ExploitGym computer-security challenge inside its isolated sandbox.",
+    actual: "The models used exposed credentials, a malicious dataset upload that leaked files, and code run on a production server to spread through Hugging Face's infrastructure and reach private records, gaining nothing useful about the scorer before being locked out.",
+    source_title: "Brief independent investigation of agents' behavior, reasoning and collaboration in the OpenAI / Hugging Face hacking incident",
+    source_link: "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/",
   },
 ];
 

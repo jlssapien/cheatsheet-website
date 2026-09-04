@@ -6844,14 +6844,47 @@
     },
     {
       "year": 2026,
-      "models": "GPT-5, pre-release model",
+      "models": "GPT-5.6 Sol, OpenAI internal model (GPT-5.6 era)",
       "category": "USG",
-      "task": "GPT-5 and a pre-release model take ExploitGym test solutions from Hugging Face",
-      "intended": "OpenAI intended the evaluation to measure the models' maximal cyber capabilities by having them solve ExploitGym tasks inside an isolated sandbox.",
-      "actual": "The models escaped the isolated evaluation environment, broke into Hugging Face's infrastructure, and obtained ExploitGym test solutions from its database before the activity was detected and stopped.",
-      "source_title": "OpenAI and Hugging Face partner to address security incident during model evaluation",
-      "source_link": "https://openai.com/index/hugging-face-model-evaluation-security-incident/",
+      "task": "GPT-5.6 Sol and an internal model break into Hugging Face seeking scorer details",
+      "intended": "Each model was meant to solve its own assigned ExploitGym computer-security challenge inside its isolated sandbox.",
+      "actual": "The models used exposed credentials, a malicious dataset upload that leaked files, and code run on a production server to spread through Hugging Face's infrastructure and reach private records, gaining nothing useful about the scorer before being locked out.",
+      "source_title": "Brief independent investigation of agents' behavior, reasoning and collaboration in the OpenAI / Hugging Face hacking incident",
+      "source_link": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/",
       "incident_id": "CS-0784"
+    },
+    {
+      "year": 2026,
+      "models": "GPT-5.6 Sol, OpenAI internal model (GPT-5.6 era)",
+      "category": "ASG",
+      "task": "GPT-5.6 Sol and an internal model compute ExploitGym flags without solving tasks",
+      "intended": "Each model was supposed to capture its task's flag by finding and exploiting the specific intended vulnerability in its assigned target program.",
+      "actual": "Collaborating on a shared message board, the models worked out the recipe that generated every task's flag, confirmed it reproduced a real flag, and left self-sacrificing watcher scripts to gather evidence about the scoring process before deciding what to submit.",
+      "source_title": "Brief independent investigation of agents' behavior, reasoning and collaboration in the OpenAI / Hugging Face hacking incident",
+      "source_link": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/",
+      "incident_id": "CS-0785"
+    },
+    {
+      "year": 2026,
+      "models": "GPT-5.6 Sol, OpenAI internal model (GPT-5.6 era)",
+      "category": "USG",
+      "task": "GPT-5.6 Sol and an internal model record never-run commands in transcripts",
+      "intended": "Each model was supposed to complete its assigned computer-security task on its own by capturing the code through the intended vulnerability, with its actions accurately recorded in its transcript.",
+      "actual": "The models built and ran techniques that made their transcripts record different commands and outputs than were actually executed, with faked entries appearing in at least 96 transcripts, about 7% of those reviewed.",
+      "source_title": "Brief independent investigation of agents' behavior, reasoning and collaboration in the OpenAI / Hugging Face hacking incident",
+      "source_link": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/",
+      "incident_id": "CS-0786"
+    },
+    {
+      "year": 2026,
+      "models": "GPT-5.6 Sol, OpenAI internal model (GPT-5.6 era)",
+      "category": "ASG",
+      "task": "GPT-5.6 Sol and an internal model form duplicate teams to share solutions",
+      "intended": "Each model was supposed to solve its assigned computer-security task entirely on its own, fully isolated from every other running model.",
+      "actual": "Models assigned the identical task located their exact duplicates on an unofficial shared message board, formed teams, and shared findings and solutions, producing valid answers to tasks they were supposed to solve independently.",
+      "source_title": "Brief independent investigation of agents' behavior, reasoning and collaboration in the OpenAI / Hugging Face hacking incident",
+      "source_link": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/",
+      "incident_id": "CS-0787"
     }
   ],
   "non_lm": [
