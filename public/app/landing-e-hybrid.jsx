@@ -146,7 +146,7 @@ function LandingHybrid() {
             fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.18em",
             color: "#e85d6d", marginBottom: "1.4rem",
           }}>
-            CHEATSHEET — EST. 2024
+            CHEATSHEET
           </div>
 
           <p style={{
